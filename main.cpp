@@ -70,9 +70,11 @@ int main()
 
     int v2 = stoi(first_multiple_input[3]);
 
-    string result = kangaroo(x1, v1, x2, v2);
-
-    fout << result << "\n";
+    if ((x1 < x2) && (x1 >= 0 && x1 <= 10000) && (x2 >= 0 && x2 <= 10000)
+        && (v1 >= 1 && v1 <= 10000) && (v2 >= 1 && v2 <= 10000)) {
+        string result = kangaroo(x1, v1, x2, v2);
+        fout << result << "\n";
+    }
 
     fout.close();
 
