@@ -18,7 +18,39 @@ vector<string> split(const string &);
  */
 
 string kangaroo(int x1, int v1, int x2, int v2) {
+    int kangaroo1Position = 0;
+    int kangaroo2Position = 0;
+    bool positionMatch = false;
+    string strpositionMatch = "";
+    kangaroo1Position = x1 + v1;
+    kangaroo2Position = x2 + v2;
 
+    if ((x1 > x2 && v1 > v2) || (x1 < x2 && v1 < v2)) {
+        positionMatch = false;
+    }
+    else {
+        if (kangaroo1Position == kangaroo2Position ) {
+            positionMatch = true;
+        }
+        while (!positionMatch) {
+            kangaroo1Position += v1;
+            kangaroo2Position += v2;
+            if (kangaroo1Position == kangaroo2Position) {
+                positionMatch = true;
+            }
+        }
+    }
+
+    //X1 & X2 are kangaroo 1 & 2 starting positions respectively.
+    //V1 & V2 are kangaroo 1 & 2's distance per "jump"
+
+    if (positionMatch) {
+        strpositionMatch = "YES";
+    }
+    else {
+        strpositionMatch = "NO";
+    }
+    return strpositionMatch;
 }
 
 int main()
