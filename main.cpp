@@ -24,6 +24,7 @@ string kangaroo(int x1, int v1, int x2, int v2) {
     string strpositionMatch = "";
     kangaroo1Position = x1 + v1;
     kangaroo2Position = x2 + v2;
+    bool biggerJumpInLead = false;
 
     if ((x1 > x2 && v1 > v2) || (x1 < x2 && v1 < v2)) {
         positionMatch = false;
@@ -32,11 +33,18 @@ string kangaroo(int x1, int v1, int x2, int v2) {
         if (kangaroo1Position == kangaroo2Position ) {
             positionMatch = true;
         }
-        while (!positionMatch) {
+        while (!positionMatch && !biggerJumpInLead) {
+            //if the kangaroo with the great jump size moves ahead, break out of loop.
             kangaroo1Position += v1;
             kangaroo2Position += v2;
             if (kangaroo1Position == kangaroo2Position) {
                 positionMatch = true;
+            }
+            else if ((kangaroo1Position > kangaroo2Position) && (v1 > v2)) {
+                biggerJumpInLead = true;
+            }
+            else if ((kangaroo2Position > kangaroo1Position) && (v2 > v1)) {
+                biggerJumpInLead = true;
             }
         }
     }
